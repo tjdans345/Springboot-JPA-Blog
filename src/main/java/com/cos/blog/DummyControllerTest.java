@@ -28,7 +28,7 @@ public class DummyControllerTest {
 		System.out.println(user.getRole());
 		System.out.println(user.getCreateDate());
 		
-		// 잘못된 값을 방지하기 위해 Enum을 사용한다
+		// 잘못된 값을 방지하기 위해 Enum을 사용한다 // Enum을 사용하여 실수를 방지한다
 		user.setRole(RoleType.USER);
 		
 		userRepository.save(user);
