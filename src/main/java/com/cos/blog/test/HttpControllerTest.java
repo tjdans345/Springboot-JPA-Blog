@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 // @Controller
 
 // 사용자가 요청 -> 응답(Data를 응답 해줌) RestController이다
-
 @RestController
 public class HttpControllerTest {
 	
