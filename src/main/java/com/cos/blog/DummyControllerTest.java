@@ -6,10 +6,12 @@ import java.util.function.Supplier;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +45,7 @@ public class DummyControllerTest {
 	// Pageable 페이지 가능~
 	// getContent로 필요 Data(실제 유저정보)만 보내더라도 쿼리스트링으로 페이징처리 가능
 	@GetMapping("/dummy/user")
-	public List<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable ) {
+	public List<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Direction.DESC)Pageable pageable ) {
 		Page<User> pageUsers = userRepository.findAll(pageable);
 		List<User> users = pageUsers.getContent();
 		return users;
@@ -105,7 +107,7 @@ public class DummyControllerTest {
 	// save함수는 id를 전달하지 않으면 insert를 해주고
 	// save함수는 id를 전달하면 해당 id에 대한 데이터가 있으면 update를 해주고
 	// save함수는 id를 전달하면 해당 id에 대한 데이터가 없으면 insert를 해준다.
-	@Transactional
+	@Transactional // 해당 컨트롤러가 종료될 때 트랜잭션도 종료가 된다. 종료가 될 때 변경이 감지 됨 / 함수 종료시에 자동으로 commit이 됨.
 	@PutMapping("/dummy/user/{id}")
 	public User updateUser(@PathVariable int id, @RequestBody User requestUser) { 
 		//json데이터를 요청 => Java Object(MessageConverter의 Jackson라이버리가 자바 오브젝트로 변환해서 받아 줌
@@ -120,11 +122,23 @@ public class DummyControllerTest {
 		user.setEmail(requestUser.getEmail());
 		// userRepository.save(requestUser);
 		
-		
 		//flush : 데이터를 데이터를 넣는 것 (프로그래밍에서는 buffer를 비운다라고 한다.)
 		
-		// 더티 체킹
-		return null;
+		// 더티 체킹 (변경이 감지 되었을 때 DB Data를 변경 후 커밋함)
+		// DB에서는 데이터를 모아뒀다가 한번에 커밋 하는것을 더티 체킹이라한다.
+		return user;
 	}
+	
+	@DeleteMapping("/dummy/user/{id}")
+	public String delete(@PathVariable int id) {
+		try {
+			userRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			return "삭제에 실패하였습니다. 해당 id는 DB에 없습니다.";
+		}
+		return "삭제 되었습니다.";
+	}
+	
+	
 
 }
