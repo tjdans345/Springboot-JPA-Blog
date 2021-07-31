@@ -2,6 +2,9 @@ package com.cos.blog;
 
 import java.util.List;
 import java.util.function.Supplier;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -102,6 +105,7 @@ public class DummyControllerTest {
 	// save함수는 id를 전달하지 않으면 insert를 해주고
 	// save함수는 id를 전달하면 해당 id에 대한 데이터가 있으면 update를 해주고
 	// save함수는 id를 전달하면 해당 id에 대한 데이터가 없으면 insert를 해준다.
+	@Transactional
 	@PutMapping("/dummy/user/{id}")
 	public User updateUser(@PathVariable int id, @RequestBody User requestUser) { 
 		//json데이터를 요청 => Java Object(MessageConverter의 Jackson라이버리가 자바 오브젝트로 변환해서 받아 줌
@@ -109,9 +113,17 @@ public class DummyControllerTest {
 		System.out.println("password : " + requestUser.getPassword());
 		System.out.println("emmail : " + requestUser.getEmail());
 		
-		requestUser.setId(id);
-		requestUser.setUsername("ssar"); 
+		User user = userRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("수정에 실패하였습니다.");
+		});
+		user.setPassword(requestUser.getPassword());
+		user.setEmail(requestUser.getEmail());
 		// userRepository.save(requestUser);
+		
+		
+		//flush : 데이터를 데이터를 넣는 것 (프로그래밍에서는 buffer를 비운다라고 한다.)
+		
+		// 더티 체킹
 		return null;
 	}
 
