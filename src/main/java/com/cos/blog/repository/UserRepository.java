@@ -9,7 +9,14 @@ import com.cos.blog.model.User;
 // @Repository 생략이 가능하다
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
+	// 로그인을 위한 함수
+	// JPA Naming 전략(쿼리) / 대문자를 기준으로 동작
+	// select * from user where username = ?1 AND password = ?2;
+	User findByUsernameAndPassword(String username, String password);
 	
+	// 2번째 방법 (네이티브 쿼리)
+//	@Query(value = "select * from user where username = ?1 AND password = ?2", nativeQuery = true)
+//	User login(String username, String password);
 	
 
 }

@@ -48,8 +48,6 @@ public class DummyControllerTest {
 		return users;
 	}
 	
-	
-	
 	// {id} 주소로 파라메터를 전달 받을 수 있음.
 	// http://localhost:8090/blog/dummy/user/3
 	@GetMapping("/dummy/user/{id}")
@@ -120,7 +118,6 @@ public class DummyControllerTest {
 		// userRepository.save(requestUser);
 		
 		//flush : 데이터를 데이터를 넣는 것 (프로그래밍에서는 buffer를 비운다라고 한다.)
-		
 		// 더티 체킹 (변경이 감지 되었을 때 DB Data를 변경 후 커밋함)
 		// DB에서는 데이터를 모아뒀다가 한번에 커밋 하는것을 더티 체킹이라한다.
 		return user;

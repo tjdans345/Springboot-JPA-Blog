@@ -5,7 +5,7 @@
 <div class="container">
 	<form>
 	
-		<div class="form-group">
+		<div>
 			<label for="username">Username</label> <input type="text" class="form-control" placeholder="Enter username" id="username">
 		</div>
 		
@@ -24,5 +24,3 @@
 
 <script src="/blog/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
-
-

@@ -20,6 +20,7 @@ spring:
     password: cos1234
     
   jpa:
+#  open-in-view 영속성 컨텍스트 설정
     open-in-view: true
     hibernate:
       ddl-auto: update
