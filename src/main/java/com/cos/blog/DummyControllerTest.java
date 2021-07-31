@@ -31,9 +31,6 @@ public class DummyControllerTest {
 	@Autowired
 	private UserRepository userRepository;
 	
-	
-	
-	
 	// http://localhost:8090/blog/dummy/user
 	@GetMapping("/dummy/users")
 	public List<User> list() {
