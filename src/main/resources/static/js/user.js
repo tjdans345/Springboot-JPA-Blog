@@ -20,14 +20,14 @@ let index = {
 		// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환 해줌
 		$.ajax({ // 회원가입 수행 요청 (100초가 걸린다고 가정해도 밑에 로직이 실행이 됨)
 			type: "POST",
-			url: "/blog/api/user",
+			url: "/api/user",
 			data: JSON.stringify(data), // http body 데이터
 			contentType: "application/json; charset=urf-8", //body데이터가 어떤 타입인지(MIME)
 			dataType: "json" // 응답타입:json / 요청을 서버로해서 응답이 왔을 때 기본적으로 모든것이 문자열 (생긴게 json이라면) => javascript오브젝트로 변경해줌 
 		}).done(function(response) {
 			console.log(response);
 			alert("회원가입이 완료되었습니다.");
-			location.href = "/blog";
+			location.href = "/";
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
@@ -46,14 +46,14 @@ let index = {
 		// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환 해줌
 		$.ajax({ // 회원가입 수행 요청 (100초가 걸린다고 가정해도 밑에 로직이 실행이 됨)
 			type: "POST",
-			url: "/blog/api/user/login",
+			url: "/api/user/login",
 			data: JSON.stringify(data), // http body 데이터
 			contentType: "application/json; charset=urf-8", //body데이터가 어떤 타입인지(MIME)
 			dataType: "json" // 응답타입:json / 요청을 서버로해서 응답이 왔을 때 기본적으로 모든것이 문자열 (생긴게 json이라면) => javascript오브젝트로 변경해줌 
 		}).done(function(response) {
 			console.log(response);
 			alert("로그인이 완료되었습니다.");
-			location.href = "/blog";
+			location.href = "/";
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
