@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 // 인증이 안된 사용자들이 출입할 수 있는 경로를 /auth/** 허용
 // 그냥 주소가 / 이면 index.jsp 허용 , 나머지 주소들은 다 인증 후 허용
-
 @Controller
 public class UserController {
 	
@@ -16,6 +15,7 @@ public class UserController {
 	
 	@GetMapping("/auth/loginForm")
 	public String loginForm() {
+		System.out.println("왔스");
 		return "user/loginForm";
 	}
 
