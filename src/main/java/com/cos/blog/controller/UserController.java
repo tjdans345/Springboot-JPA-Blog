@@ -15,7 +15,6 @@ public class UserController {
 	
 	@GetMapping("/auth/loginForm")
 	public String loginForm() {
-		System.out.println("왔스");
 		return "user/loginForm";
 	}
 

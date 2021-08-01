@@ -1,5 +1,7 @@
 package com.cos.blog.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cos.blog.model.User;
@@ -9,6 +11,8 @@ import com.cos.blog.model.User;
 // @Repository 생략이 가능하다 JpaRepository 상속 받았기 때문
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
+	// SELECT * FROM user WHERE username = 1?;
+	Optional<User> findByUsername(String username);
 	
 	
 

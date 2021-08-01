@@ -21,7 +21,7 @@
 <!-- 			</label> -->
 <!-- 		</div> -->
 
-		<button type="button" id="btn-login" class="btn btn-primary">로그인</button>
+		<button type="submit" id="btn-login" class="btn btn-primary">로그인</button>
 	</form>
 
 

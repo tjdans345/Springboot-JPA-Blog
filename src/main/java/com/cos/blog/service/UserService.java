@@ -25,12 +25,12 @@ public class UserService {
 	public void 회원가입(User user) {
 		
 		String rawPassword = user.getPassword(); //1234 원문 패스워드
-		String encPassword = encoder.encode(rawPassword);
+		String encPassword = encoder.encode(rawPassword); // 패스워드 암호화
 		
 		user.setPassword(encPassword);
 		user.setRole(RoleType.USER);
 		
-		userRepository.save(user);
+		userRepository.save(user); // insert할때는 save를 사용하네
 	}
 
 //	@Transactional(readOnly = true) //Select할 때 트랜잭션 시작, 서비스 종료시에 트랜잭션 종료 (정합성 유지 시킴)
