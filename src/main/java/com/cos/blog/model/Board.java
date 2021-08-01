@@ -42,7 +42,6 @@ public class Board {
 	@Lob //대용량 데이터를 사용할 때 Lob을 사용
 	private String content;
 	
-	@ColumnDefault("0")
 	private int count;
 	
 	@ManyToOne(fetch = FetchType.EAGER) // Many = Board, User = one 한명의 유저는 여러개의 게시글을 쓸 수 있다. default는 EAGER전략이다(ManyToOne)
