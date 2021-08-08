@@ -3,6 +3,10 @@ let index = {
 		$("#btn-save").on("click", () => { // function(){} 대신에 ()=>{} 사용이유 : this를 바인딩 하기 위해서!!
 			this.save();
 		});
+		
+		$("#btn-delete").on("click", () => { // function(){} 대신에 ()=>{} 사용이유 : this를 바인딩 하기 위해서!!
+			this.deleteById();
+		});
 	},
 	
 	save: function() {
@@ -24,6 +28,24 @@ let index = {
 		}).done(function(response) {
 			console.log(response);
 			alert("글쓰기가 완료되었습니다.");
+			location.href = "/";
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+	},
+	
+	deleteById: function() {
+		
+		var id = $("#id").text();
+
+		$.ajax({ 
+			type: "DELETE",
+			url: "/api/board/"+id,
+			contentType: "application/json; charset=urf-8", 
+			dataType: "json" 
+		}).done(function(response) {
+			console.log(response);
+			alert("삭제가 완료되었습니다.");
 			location.href = "/";
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
