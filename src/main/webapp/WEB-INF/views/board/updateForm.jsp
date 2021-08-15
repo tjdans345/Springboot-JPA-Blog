@@ -3,16 +3,20 @@
 <%@ include file="../layout/header.jsp"%>
 
 <div class="container">
+
+
+
 	<form>
+	<input type="hidden" id="id" value="${board.id}"/>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Enter title" id="title">
+			<input value="${board.title}" type="text" class="form-control" placeholder="Enter title" id="title">
 		</div>
 
 		<div class="form-group">
-			<textarea class="form-control summernote" rows="5" id="content"></textarea>
+			<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
 		</div>
 	</form>
-	<button type="button" id="btn-save" class="byn btn-primary">글 등록</button>
+	<button type="button" id="btn-update" class="byn btn-primary">글 수정완료</button>
 </div>
 
 <script>
