@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/", "/auth/**", "/js/**", "/css/**", "/iamge/**", "/dummy/**")
 				.permitAll() //위 auth주로 들어오는 요청은 다 허용한다라는 의미
 				.anyRequest()
-				.authenticated()
+				.authenticated() 
 			.and()
 				.formLogin()
 				.loginPage("/auth/loginForm")

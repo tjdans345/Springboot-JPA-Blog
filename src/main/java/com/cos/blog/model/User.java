@@ -28,7 +28,6 @@ import lombok.NoArgsConstructor;
 // @DynamicInsert // insert시에 null인 필드를 제외시켜준다.
 public class User {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //프로젝트에서 연결된 DB의 넘버링 전략을 따라간다.
 	private int id; //시퀀스, auto_increament

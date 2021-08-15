@@ -55,7 +55,7 @@ public class BoardService {
 				});// 영속화 완료
 		board.setTitle(requestBoard.getTitle());
 		board.setContent(requestBoard.getContent());
-		//해당 함수로 종료시(Service가 종료될 때)에 트랜잭션이 종료됩니다. 이 대 더티체킹이 일어나면서 - 자동 업데이트가 됨ㅁ. db flust(즉 commit이 된다.)
+		//해당 함수로 종료시(Service가 종료될 때)에 트랜잭션이 종료됩니다. 이 대 더티체킹이 일어나면서 - 자동 업데이트가 됨. db flust(즉 commit이 된다.)
 	}
 
 
