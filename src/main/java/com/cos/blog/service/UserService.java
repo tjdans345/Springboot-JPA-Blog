@@ -23,7 +23,7 @@ public class UserService {
 	
 	@Transactional(readOnly = true)
 	public User 회원찾기(String username) {
-		User user =  userRepository.findByUsername(username).orElseGet(()-> {
+		User user =  userRepository.findByUsername(username).orElseGet(()-> { //orElseGet -> 찾아서 없으면 어떤 값을 리턴해줘라
 			return new User();
 		});
 		return user;
@@ -31,7 +31,6 @@ public class UserService {
 	
 	@Transactional
 	public void 회원가입(User user) {
-		
 		String rawPassword = user.getPassword(); //1234 원문 패스워드
 		String encPassword = encoder.encode(rawPassword); // 패스워드 암호화
 		
@@ -49,12 +48,14 @@ public class UserService {
 		User persistance = userRepository.findById(user.getId()).orElseThrow(()-> {
 			return new IllegalArgumentException("회원 찾기 실패");
 		});
-		String rawPassword = user.getPassword();
-		String encPassword = encoder.encode(rawPassword);
-		persistance.setPassword(encPassword);
-		persistance.setEmail(user.getEmail());
 		
-		
+		// Valudate 체크 => oauth 필드에 값이 없으면 수정 가능
+		if(persistance.getOauth() == null || persistance.getOauth().equals("")) {
+			String rawPassword = user.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			persistance.setPassword(encPassword);
+			persistance.setEmail(user.getEmail());
+		}
 		// 회원수정 함수 종료시 = 서비스 종료 = 트랜잭션 종료 = commit이 자동으로 됩니다.
 		// 영속화된 persistance 객체의 변화가 감지되면 더티체킹이 되어 update문을 날려줌.
 		
