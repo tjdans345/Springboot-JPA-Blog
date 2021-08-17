@@ -42,7 +42,6 @@ public class BoardService {
 
 	@Transactional
 	public void 글삭제하기(int id) {
-		System.out.println("여기야2 " + id);
 		 boardRepository.deleteById(id);
 	}
 
