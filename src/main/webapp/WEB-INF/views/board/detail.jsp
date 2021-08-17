@@ -24,12 +24,15 @@
 
 
 	<div class="card">
+		<form>
+		<input type="hidden" id="boardId" value="${board.id}"/>
 		<div class="card-body">
-			<textarea class="form-control" rows="2" cols=""></textarea>
+			<textarea id="reply-content" class="form-control" rows="2" cols=""></textarea>
 		</div>
 		<div class="card-footer">
-			<button type="button" class="btn btn-primary">등록</button>
+			<button id="btn-reply-save" type="button" class="btn btn-primary">등록</button>
 		</div>
+		</form>
 	</div>
 	<br />
 	<div class="card">
