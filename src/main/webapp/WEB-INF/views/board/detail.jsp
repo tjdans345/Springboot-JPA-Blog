@@ -43,10 +43,12 @@
 		<c:forEach var="reply" items="${board.replys}">
 			<li id="reply-${reply.id}" class="list-group-item d-flex justify-content-between">
 				<div>${reply.content}</div>
+				<c:if test="${principa.user.id == reply.user.id}">
 				<div class="d-flex">
 					<div class="font-italic">작성자 : ${reply.user.username} &nbsp;</div>
 					<button onclick="index.replyDelete(${board.id}, ${reply.id})" class="badge" type="button">삭제</button>
 				</div>
+				</c:if>
 			</li>
 		</c:forEach>
 

@@ -102,6 +102,11 @@ public class BoardService {
 		System.out.println("리조트 : " + result); // 오브젝트를 출력하게되면 자동으로 toString()이 호출된다. 기본적인 상식 같은거임
 	}
 
+	@Transactional
+	public void 댓글삭제(int replyId) {
+		replyRepository.deleteById(replyId);
+	}
+
 
 	
 }
