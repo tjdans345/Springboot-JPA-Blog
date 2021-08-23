@@ -27,9 +27,6 @@ public class BoardService {
 	@Autowired
 	private ReplyRepository replyRepository;
 	
-	@Autowired
-	private UserRepository userRepository;
-	
 	@Transactional
 	public void 글쓰기(Board board, User user) { // title, content
 		System.out.println(user);
@@ -87,7 +84,9 @@ public class BoardService {
 //					.build();
 //		Reply reply = new Reply();
 //		reply.update(user, board, replySaveRequestDto.getContent());
-		replyRepository.mySave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+		int result = replyRepository.mySave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+//		Reply reply = replyRepository.mySave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+		System.out.println("리조트 : " + result); // 오브젝트를 출력하게되면 자동으로 toString()이 호출된다. 기본적인 상식 같은거임
 	}
 
 
