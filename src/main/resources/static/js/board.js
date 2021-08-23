@@ -113,6 +113,20 @@ let index = {
 			alert(JSON.stringify(error));
 		});
 	},
+	
+	replyDelete: function(boardId, replyId) {
+		
+		$.ajax({ // 회원가입 수행 요청 (100초가 걸린다고 가정해도 밑에 로직이 실행이 됨)
+			type: "DELETE",
+			url: `/api/board/${boardId}/reply/${replyId}`,
+			dataType: "json"
+		}).done(function(response) { 
+			alert("댓글 삭제가 완료되었습니다.");
+			location.href = `/board/${boardId}`;
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
+	},
 
 }
 

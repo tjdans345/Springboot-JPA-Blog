@@ -2,7 +2,6 @@ package com.cos.blog.service;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,22 +9,36 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.dto.ReplysaveRequestDto;
 import com.cos.blog.model.Board;
-import com.cos.blog.model.Reply;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.BoardRepository;
 import com.cos.blog.repository.ReplyRepository;
-import com.cos.blog.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
 
 // 스프링이 컴포넌트 스캔을 통해서 Bean에 등록을 해줌. Ioc를 해준다.
 // 비지니스로직은 서비스단에서 작성한다.
 @Service
+// @Autowired 3번째 방법
+@RequiredArgsConstructor // 생성자를 만들때 초기화가 되어야하는 변수들을 생성자 파라미터에 넣어서 꼭 초기화를 하라는 어노테이션
 public class BoardService {
-
-	@Autowired
-	private BoardRepository boardRepository;
 	
-	@Autowired
-	private ReplyRepository replyRepository;
+	// @Autowired 2번째 방법
+	// final을 사용하게되면 어떠한 값이든 초기화가 되어야 한다.
+	private final BoardRepository boardRepository;
+	private final ReplyRepository replyRepository;
+	
+	// @Autowired 2번째 방법
+	// 자바에서 기본생성자는 파라미터를 받는 생성자를 만드는 즉시 기본 생성자는 사라진다.
+//	public BoardService(BoardRepository boardRepository, ReplyRepository replyRepository) {
+//		this.boardRepository = boardRepository;
+//		this.replyRepository = replyRepository;
+//	}
+
+//	@Autowired
+//	private BoardRepository boardRepository;
+//	
+//	@Autowired
+//	private ReplyRepository replyRepository;
 	
 	@Transactional
 	public void 글쓰기(Board board, User user) { // title, content

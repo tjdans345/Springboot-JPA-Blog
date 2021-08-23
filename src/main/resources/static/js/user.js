@@ -28,14 +28,19 @@ let index = {
 			contentType: "application/json; charset=urf-8", //body데이터가 어떤 타입인지(MIME)
 			dataType: "json" // 응답타입:json / 요청을 서버로해서 응답이 왔을 때 기본적으로 모든것이 문자열 (생긴게 json이라면) => javascript오브젝트로 변경해줌 
 		}).done(function(response) {
-			console.log(response);
-			alert("회원가입이 완료되었습니다.");
-			location.href = "/";
+			alert(response.status);
+			if (response.status === 500) {
+				alert("회원가입이 실패하였습니다.");
+			} else {
+				alert("회원가입이 완료되었습니다.");
+				location.href = "/";
+			}
+
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
 	},
-	
+
 	update: function() {
 		let data = {
 			id: $("#id").val(),
