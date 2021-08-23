@@ -25,6 +25,7 @@
 
 	<div class="card">
 		<form>
+		<input type="hidden" id="userId" value="${principa.user.id}">
 		<input type="hidden" id="boardId" value="${board.id}"/>
 		<div class="card-body">
 			<textarea id="reply-content" class="form-control" rows="2" cols=""></textarea>

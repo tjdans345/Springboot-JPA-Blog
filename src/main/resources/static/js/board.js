@@ -89,9 +89,11 @@ let index = {
 	
 	replySave: function() {
 		let data = {
+			userId: $("#userId").val(),
+			boardId: $("#boardId").val(),
 			content: $("#reply-content").val(),
 		};
-		let boardId= $("#boardId").val();
+		console.log("콘솔"+data.userId);
 
 		//$.ajax().done().fail()
 		// ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청!!!
@@ -99,14 +101,14 @@ let index = {
 		// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환 해줌
 		$.ajax({ // 회원가입 수행 요청 (100초가 걸린다고 가정해도 밑에 로직이 실행이 됨)
 			type: "POST",
-			url: `/api/board/${boardId}/reply`,
+			url: `/api/board/${data.boardId}/reply`,
 			data: JSON.stringify(data), 
 			contentType: "application/json; charset=urf-8", 
 			dataType: "json" 
-		}).done(function(response) {
+		}).done(function(response) { 
 			console.log(response);
 			alert("댓글작성이 완료되었습니다.");
-			location.href = `/board/${boardId}`;
+			location.href = `/board/${data.boardId}`;
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
