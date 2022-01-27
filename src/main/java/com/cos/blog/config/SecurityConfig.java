@@ -36,8 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
-
-
 	// 시큐리티가 대신 로그인해주는데 password를 가로채기를 하는데
 	// 해당 password가 뭘로 해쉬가 되어 회원가입이 되었는지 알아야
 	// 같은 해쉬로 암호화해서 DB에 있는 해쉬랑 비교할 수 있음.

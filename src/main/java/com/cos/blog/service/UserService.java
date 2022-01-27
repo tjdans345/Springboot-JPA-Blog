@@ -20,7 +20,12 @@ public class UserService {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
+
+	/**
+	 *
+	 * @param username
+	 * @return
+	 */
 	@Transactional(readOnly = true)
 	public User 회원찾기(String username) {
 		User user =  userRepository.findByUsername(username).orElseGet(()-> { //orElseGet -> 찾아서 없으면 어떤 값을 리턴해줘라
@@ -28,7 +33,11 @@ public class UserService {
 		});
 		return user;
 	}
-	
+
+	/**
+	 *
+	 * @param user
+	 */
 	@Transactional
 	public void 회원가입(User user) {
 		String rawPassword = user.getPassword(); //1234 원문 패스워드
@@ -40,6 +49,10 @@ public class UserService {
 		userRepository.save(user); // insert할때는 save를 사용하네
 	}
 
+	/**
+	 *
+	 * @param user
+	 */
 	@Transactional
 	public void 회원수정(User user) {
 		// 수정시에는 영속성 컨텍스트 User 오브젝트를 영속화시키고, 영속화된 User 오브젝트를 수정

@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cos.blog.config.auth.PrincipalDetail;
+import com.cos.blog.config.auth.principalDetail;
 import com.cos.blog.dto.ReplysaveRequestDto;
 import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.Board;
-import com.cos.blog.model.Reply;
 import com.cos.blog.service.BoardService;
 
 @RestController
@@ -24,7 +23,7 @@ public class BoardApiController {
 	private BoardService boardService;
 
 	@PostMapping("/api/board")
-	public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principal) {
+	public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal principalDetail principal) {
 		boardService.글쓰기(board, principal.getUser());
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
