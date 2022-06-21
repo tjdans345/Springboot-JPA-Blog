@@ -20,5 +20,5 @@ Spring Boot를 더 파보면서 Back공부를 계속해서 해나갈 예정
 - SpringBoot Security JWT Web Token 공부
 -  React + Flutter
 
-기술블로그 운영 예정 기술블로그 생성하기 !! 
+기술블로그 운영 예정 기술블로그 생성하기!!(완료)
 
