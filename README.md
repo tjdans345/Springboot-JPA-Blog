@@ -13,12 +13,12 @@ Spring Security 공부 , JWT 공부 , Docker, AWS 배포 등등 아직 할게 �
 Spring Boot를 더 파보면서 Back공부를 계속해서 해나갈 예정
 
 앞으로 공부할 것들
-- SpringBoot Validation Check
-- SpringBoot AOP LOG File Create
-- Sentry.io 이용하여 로그파일 생성
-- SpringBoot Security OAuth2.0-Client Facebook, Google, Naver 구현
-- SpringBoot Security JWT Web Token 공부
--  React + Flutter
+- SpringBoot Validation Check (완료) 
+- SpringBoot AOP LOG File Create (완료)
+- Sentry.io 이용하여 로그파일 생성 
+- SpringBoot Security OAuth2.0-Client Facebook, Google, Naver 구현 (완료)
+- SpringBoot Security JWT Web Token 공부 (완료)
+-  React + Flutter 
 
 기술블로그 운영 예정 기술블로그 생성하기!!(완료)
 
