@@ -15,7 +15,7 @@ Spring Boot를 더 파보면서 Back공부를 계속해서 해나갈 예정
 앞으로 공부할 것들
 - SpringBoot Validation Check (완료) 
 - SpringBoot AOP LOG File Create (완료)
-- Sentry.io 이용하여 로그파일 생성 
+- Sentry.io 이용하여 로그파일 생성 (완료)
 - SpringBoot Security OAuth2.0-Client Facebook, Google, Naver 구현 (완료)
 - SpringBoot Security JWT Web Token 공부 (완료)
 -  React + Flutter 
